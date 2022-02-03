@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/OscarYuen/go-graphql-starter/context"
+	"github.com/javacode123/go-graphql-starter/context"
 	"github.com/op/go-logging"
 	"os"
 )

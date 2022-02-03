@@ -2,9 +2,9 @@ package resolver
 
 import (
 	"errors"
-	gcontext "github.com/OscarYuen/go-graphql-starter/context"
-	"github.com/OscarYuen/go-graphql-starter/loader"
-	"github.com/OscarYuen/go-graphql-starter/service"
+	gcontext "github.com/javacode123/go-graphql-starter/context"
+	"github.com/javacode123/go-graphql-starter/model"
+	"github.com/javacode123/go-graphql-starter/service"
 	"github.com/op/go-logging"
 	"golang.org/x/net/context"
 )
@@ -14,14 +14,15 @@ func (r *Resolver) User(ctx context.Context, args struct {
 }) (*userResolver, error) {
 	//Without using dataloader:
 	//user, err := ctx.Value("userService").(*service.UserService).FindByEmail(args.Email)
-	userId := ctx.Value("user_id").(*string)
-	user, err := loader.LoadUser(ctx, args.Email)
-	if err != nil {
-		ctx.Value("log").(*logging.Logger).Errorf("Graphql error : %v", err)
-		return nil, err
-	}
-	ctx.Value("log").(*logging.Logger).Debugf("Retrieved user by user_id[%s] : %v", *userId, *user)
-	return &userResolver{user}, nil
+	//userId := ctx.Value("user_id").(*string)
+	////user, err := loader.LoadUser(ctx, args.Email)
+	////if err != nil {
+	////	ctx.Value("log").(*logging.Logger).Errorf("Graphql error : %v", err)
+	////	return nil, err
+	////}
+	//ctx.Value("log").(*logging.Logger).Debugf("Retrieved user by user_id[%s] : %v", *userId, *user)
+
+	return &userResolver{&model.User{Email: args.Email}}, nil
 }
 
 func (r *Resolver) Users(ctx context.Context, args struct {

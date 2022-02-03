@@ -8,7 +8,7 @@ import (
 func GetRootSchema() string {
 	buf := bytes.Buffer{}
 	for _, name := range AssetNames() {
-		b := MustAsset(name)
+		b, _ := Asset(name)
 		buf.Write(b)
 
 		// Add a newline if the file does not end in a newline.

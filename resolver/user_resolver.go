@@ -1,8 +1,8 @@
 package resolver
 
 import (
-	"github.com/OscarYuen/go-graphql-starter/model"
 	graphql "github.com/graph-gophers/graphql-go"
+	"github.com/javacode123/go-graphql-starter/model"
 	"time"
 )
 
